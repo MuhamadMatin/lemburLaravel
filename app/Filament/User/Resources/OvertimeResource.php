@@ -152,6 +152,9 @@ class OvertimeResource extends Resource
                     ->dateTime()
 
             ])
+            ->query(function () {
+                return Overtime::query()->with('users')->where('user_id', Auth::user()->id);
+            })
             ->filters([
                 //
             ])
