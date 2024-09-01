@@ -34,6 +34,11 @@ class OvertimeResource extends Resource
 
     protected static ?string $slug = 'overtime';
 
+    public static function roleAdminManager(): bool
+    {
+        return !Auth::user()->hasRole(['ADMIN', 'admin', 'super_admin', 'MANAGER', 'manager', 'Manager']);
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -44,17 +49,21 @@ class OvertimeResource extends Resource
                             ->label('Pekerja')
                             ->relationship('users', 'name')
                             ->searchable()
-                            ->required(),
+                            ->required()
+                            ->disabled(self::roleAdminManager()),
                         TextInput::make('posisi')
                             ->required()
-                            ->maxLength(255),
+                            ->maxLength(255)
+                            ->disabled(self::roleAdminManager()),
                         TextInput::make('pekerjaan')
                             ->required()
-                            ->maxLength(255),
+                            ->maxLength(255)
+                            ->disabled(self::roleAdminManager()),
                         DatePicker::make('tanggal')
                             ->native(false)
                             ->closeOnDateSelection()
-                            ->required(),
+                            ->required()
+                            ->disabled(self::roleAdminManager()),
                         TimePicker::make('jam_mulai')
                             ->native(false)
                             ->seconds(false)
@@ -63,7 +72,8 @@ class OvertimeResource extends Resource
                             ->afterStateUpdated(function (Forms\Get $get, Forms\Set $set) {
                                 self::calculateTotalJam($get, $set);
                             })
-                            ->required(),
+                            ->required()
+                            ->disabled(self::roleAdminManager()),
                         TimePicker::make('jam_selesai')
                             ->native(false)
                             ->seconds(false)
@@ -72,15 +82,16 @@ class OvertimeResource extends Resource
                             ->afterStateUpdated(function (Forms\Get $get, Forms\Set $set) {
                                 self::calculateTotalJam($get, $set);
                             })
-                            ->required(),
+                            ->required()
+                            ->disabled(self::roleAdminManager()),
                         TextInput::make('total_jam')
-                            ->required(),
+                            ->required()
+                            ->disabled(self::roleAdminManager()),
                     ])
                     ->columns(2),
                 Card::make()
                     ->schema([
                         SignaturePad::make('ttd_pekerja')
-                            ->disabled(Auth::user()->hasRole(['manager', 'Manager']))
                             ->downloadable()
                             ->filename('ttd_pekerja')
                             ->backgroundColor('rgba(255, 255, 255, 0)')
@@ -90,7 +101,7 @@ class OvertimeResource extends Resource
                             ->penColorOnDark('#000')
                             ->exportPenColor('#000'),
                         SignaturePad::make('ttd_manager')
-                            ->disabled(Auth::user()->hasRole(['pegawai', 'Pegawai']))
+                            ->disabled(self::roleAdminManager())
                             ->downloadable()
                             ->filename('ttd_manager')
                             ->backgroundColor('rgba(255, 255, 255, 0)')
@@ -149,7 +160,7 @@ class OvertimeResource extends Resource
                     ->html(),
                 TextColumn::make('created_at')
                     ->label('Dibuat')
-                    ->dateTime()
+                    ->dateTime('d-M-Y H:i:s')
 
             ])
             ->query(function () {

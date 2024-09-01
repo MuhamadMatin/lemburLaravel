@@ -148,7 +148,7 @@ class OvertimeResource extends Resource
                     ->html(),
                 TextColumn::make('created_at')
                     ->label('Dibuat')
-                    ->dateTime()
+                    ->dateTime('d-M-Y H:i:s')
 
             ])
             ->filters([
