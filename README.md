@@ -25,8 +25,9 @@ Projek ini merupakan projek yang saya bangun menggunakan Laravel 11 dan Filament
 3. cp .env.example .env
 4. php artisan key:generate
 5. php artisan migrate --seed
-6. php artisan serve
-7. Buka di browser and enjoy
+6. php artisan storage:link
+7. php artisan serve
+8. Buka di browser and enjoy
 
 -   Berikut email dan password
     admin@gmail.com pw: admin
