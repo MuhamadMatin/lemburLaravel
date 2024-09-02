@@ -27,3 +27,12 @@ Projek ini merupakan projek yang saya bangun menggunakan Laravel 11 dan Filament
 5. php artisan migrate --seed
 6. php artisan serve
 7. Buka di browser and enjoy
+
+## Excel
+
+Saya telah menyiapkan file excel pada bagian public yang bisa anda akses.
+
+### Spesifikasi yang saya gunakan
+
+PHP: 8.3.6
+Composer: 2.5.1
