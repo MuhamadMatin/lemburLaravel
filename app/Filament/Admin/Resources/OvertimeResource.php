@@ -4,6 +4,7 @@ namespace App\Filament\Admin\Resources;
 
 use Closure;
 use Filament\Forms;
+use App\Models\User;
 use Filament\Tables;
 use Filament\Forms\Get;
 use Filament\Forms\Set;
@@ -13,6 +14,7 @@ use Filament\Tables\Table;
 use Illuminate\Support\Carbon;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Card;
+use Illuminate\Support\Facades\Auth;
 use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
@@ -23,7 +25,6 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Admin\Resources\OvertimeResource\Pages;
 use Saade\FilamentAutograph\Forms\Components\SignaturePad;
 use App\Filament\Admin\Resources\OvertimeResource\RelationManagers;
-use Illuminate\Support\Facades\Auth;
 
 class OvertimeResource extends Resource
 {
@@ -45,7 +46,9 @@ class OvertimeResource extends Resource
                     ->schema([
                         Select::make('user_id')
                             ->label('Pekerja')
-                            ->relationship('users', 'name')
+                            ->options(
+                                User::role(['pegawai', 'Pegawai'])->pluck('name', 'id')
+                            )
                             ->searchable()
                             ->required(),
                         TextInput::make('posisi')

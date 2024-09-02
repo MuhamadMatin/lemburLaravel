@@ -16,23 +16,23 @@ class RoleSeeder extends Seeder
     {
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
-        // Membuat peran
+        // Buat role
         $admin = Role::create(['name' => 'admin']);
         $manager = Role::create(['name' => 'manager']);
         $pegawai = Role::create(['name' => 'pegawai']);
 
-        // Menghasilkan izin Shield
+        // generate izin filament-shield
         Artisan::call('shield:generate', ['--all' => true]);
 
-        // Memberikan semua izin kepada admin
+        // berikan akses ke role admin
         $admin->givePermissionTo(Permission::all());
 
-        // Memberikan semua izin overwork kepada manager
+        // berikan akses ke role manager
         $manager->givePermissionTo(
             Permission::where('name', 'like', '%overtime%')->get()
         );
 
-        // Memberikan izin view dan update overwork kepada pegawai
+        // berikan akses ke role pegawai
         $pegawai->givePermissionTo([
             'view_any_overtime',
             'view_overtime',

@@ -3,6 +3,7 @@
 namespace App\Filament\User\Resources;
 
 use Filament\Forms;
+use App\Models\User;
 use Filament\Tables;
 use App\Models\Overtime;
 use Filament\Forms\Form;
@@ -47,7 +48,9 @@ class OvertimeResource extends Resource
                     ->schema([
                         Select::make('user_id')
                             ->label('Pekerja')
-                            ->relationship('users', 'name')
+                            ->options(
+                                User::role(['pegawai', 'Pegawai'])->pluck('name', 'id')
+                            )
                             ->searchable()
                             ->required()
                             ->disabled(self::roleAdminManager()),
