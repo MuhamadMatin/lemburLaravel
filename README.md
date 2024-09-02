@@ -28,6 +28,11 @@ Projek ini merupakan projek yang saya bangun menggunakan Laravel 11 dan Filament
 6. php artisan serve
 7. Buka di browser and enjoy
 
+-   Berikut email dan password
+    admin@gmail.com pw: admin
+    manager@gmail.com pw: manager
+    pegawai@gmail.com pw: pegawai
+
 ## Excel
 
 Saya telah menyiapkan file excel pada bagian public yang bisa anda akses.
