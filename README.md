@@ -20,10 +20,10 @@ Projek ini merupakan projek yang saya bangun menggunakan Laravel 11 dan Filament
 
 ## Setup Projek lemburLaravel
 
-1. Run git clone https://github.com/MuhamadMatin/lemburLaravel.git
-2. Run composer install
-3. Run cp .env.example .env
-4. Run php artisan key:generate
-5. Run php artisan migrate --seed
-6. Run php artisan serve
-7. Open in browser and enjoy
+1. git clone https://github.com/MuhamadMatin/lemburLaravel.git
+2. composer install
+3. cp .env.example .env
+4. php artisan key:generate
+5. php artisan migrate --seed
+6. php artisan serve
+7. Buka di browser and enjoy
