@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Tentang Projek lemburLaravel
+# Tentang Projek lemburLaravel
 
 Projek ini merupakan projek yang saya bangun menggunakan Laravel 11 dan FilamentPHP, FilamentPHP memiliki banyak plugin yang dapat mempercepat pembuatan sebuah website. Dalam projek ini terdapat beberapa plugin yaitu filament-shield, filament-edit-profile, filament-autograph, laravel excel.
 
@@ -17,3 +17,13 @@ Projek ini merupakan projek yang saya bangun menggunakan Laravel 11 dan Filament
 -   [Filament-edit-profile](https://filamentphp.com/plugins/joaopaulolndev-edit-profile).
 -   [Filament-autograph](https://filamentphp.com/plugins/saade-autograph).
 -   [Laravel Excel](https://laravel-excel.com).
+
+## Setup Projek lemburLaravel
+
+1. Run git clone https://github.com/MuhamadMatin/lemburLaravel.git
+2. Run composer install
+3. Run cp .env.example .env
+4. Run php artisan key:generate
+5. Run php artisan migrate --seed
+6. Run php artisan serve
+7. Open in browser and enjoy
