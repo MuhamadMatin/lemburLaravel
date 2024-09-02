@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'manager',
                 'email' => 'manager@gmail.com',
                 'password' => bcrypt('manager'),
-                'role' => 'pegawai',
+                'role' => 'manager',
             ],
             [
                 'name' => 'pegawai',

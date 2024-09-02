@@ -52,6 +52,7 @@ class OvertimeResource extends Resource
                             ->required()
                             ->maxLength(255),
                         DatePicker::make('tanggal')
+                            ->displayFormat('d-M-Y')
                             ->native(false)
                             ->closeOnDateSelection()
                             ->required(),
@@ -135,7 +136,7 @@ class OvertimeResource extends Resource
                 TextColumn::make('pekerjaan')
                     ->searchable(),
                 TextColumn::make('tanggal')
-                    ->date()
+                    ->dateTime('d-M-Y')
                     ->sortable(),
                 TextColumn::make('jam_mulai'),
                 TextColumn::make('jam_selesai'),
